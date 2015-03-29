@@ -1,0 +1,63 @@
+// Aaron Olson
+// Csci 2002
+
+package com.company;
+import java.util.Scanner;
+
+//create main class to run as console app
+public class Main {
+
+    public static void main(String[] args) { // create main method
+
+        double[][] d = createArray(); // create a 2d array using the createArray method
+
+        double sum = 0.0; // set initial value for new variable
+        for (int column = 0; column < d[0].length; column++) { // iterate through array columns
+            sum = sumColumn(d, column);
+            System.out.println("Sum of the elements at column " + (column + 1) + " is " + sum);
+        }
+    }
+
+    public static double[][] createArray() { // create new method
+
+        Scanner input = new Scanner(System.in); // create scanner
+
+        double[][] arrayToReturn = new double[3][4]; // create new 2d array
+        System.out.println("Enter a " + arrayToReturn.length + "-by-" + arrayToReturn[0].length + " matrix row by row: ");
+        for (int i = 0; i < arrayToReturn.length; i++) // iterate through array
+            for (int j = 0; j < arrayToReturn[0].length; j++)
+                arrayToReturn[i][j] = input.nextDouble();
+        input.close(); // stop taking input
+        return arrayToReturn; // return array
+    }
+
+    public static double sumColumn(double[][] arrayPassedIn, int columnIndex){ // create new method to sum columns
+
+        double total = 0.0; // set initial variable value
+        for (int row = 0; row < arrayPassedIn.length; row++) { // iterate through the array and add values to total
+            total += arrayPassedIn[row][columnIndex];
+        }
+        return total; // return the total
+    }
+}
+
+/* Output:
+Enter a 3-by-4 matrix row by row:
+1.5 2 3 4
+5.5 6 7 8
+9.5 1 3 1
+Sum of the elements at column 1 is 16.5
+Sum of the elements at column 2 is 9.0
+Sum of the elements at column 3 is 13.0
+Sum of the elements at column 4 is 13.0
+
+Enter a 3-by-4 matrix row by row:
+345 4564675 2 45689
+1.4546 34.567 123 3.3333
+12 34 65 9876
+Sum of the elements at column 1 is 358.4546
+Sum of the elements at column 2 is 4564743.567
+Sum of the elements at column 3 is 190.0
+Sum of the elements at column 4 is 55568.3333
+  */
+

@@ -1,0 +1,120 @@
+package com.company;
+
+public class Main {
+    /* Aaron Olson Assignment 6
+     *
+     * A main method that tests a FIFO queue array of integer values.
+     */
+    public static void main(String[] args) {
+        // Test requirement #1
+        Queue queue = new Queue();
+
+        // Test requirement #2
+        queue = new Queue(3);
+
+        // Test requirement #3
+        queue.qInsert(10); // fill up queue and test for overflow
+        System.out.println("Added value: 10");
+        queue.qInsert(20);
+        System.out.println("Added value: 20");
+        queue.qInsert(30);
+        System.out.println("Added value: 30");
+
+        // Test requirement #4
+        System.out.println("Is queue full: " + queue.full());
+        queue.qInsert(40);
+
+        // Test requirement #5
+       // queue.qDelete(); // empty out queue and test for underflow
+        System.out.println("Removed value: " + queue.qDelete());
+        System.out.println("Removed value: " + queue.qDelete());
+        System.out.println("Removed value: " + queue.qDelete());
+        queue.qDelete();
+
+        // Prove queue is not full and completely empty
+        System.out.println("Is queue full: " + queue.full());
+        System.out.println("Is queue empty: " + queue.empty());
+    }
+
+
+    public static class Queue {
+        /*
+         * Pseudo-constructor
+         */
+        public int DEFAULT_CAPACITY = 3;
+        private int[] elements; // an array of type int
+        private int front = 0; // array index of the next element to be removed from the queue
+        private int rear = 0; // array index of the last element inserted into the queue
+        private int size; // the size of the array
+
+        /*
+         * Default constructor
+         */
+        public Queue() {
+            size = DEFAULT_CAPACITY + 1;
+            elements = new int[size];
+        }
+
+        /*
+         * Concrete constructor
+         */
+        public Queue(int capacity) {
+            elements = new int[capacity + 1];
+            size = elements.length;
+        }
+
+        /*
+        * Insert a value to the queue
+        */
+        public void qInsert(int value) {
+            if (full()) {
+                System.out.println("Cannot add element to full queue");
+            } else {
+                elements[rear] = value;
+                rear = (rear + 1) % size;
+            }
+        }
+
+        /*
+         * Delete a value from the queue
+         */
+        public int qDelete() {
+            int value = elements[front]; // the value of the front element
+            if (empty()) {
+                System.out.println("Cannot remove element from empty queue");
+            } else {
+                front = (front + 1) % size;
+            }
+            return value;
+        }
+
+        /*
+         * Returns a boolean indicating if the queue is empty
+         */
+        public boolean empty() {
+            return front == rear;
+        }
+
+        /*
+         * Returns a boolean indicating if the queue is full
+         */
+        public boolean full() {
+            return front == (rear + 1) % size;
+        }
+    }
+}
+
+/* Output:
+*
+Added value: 10
+Added value: 20
+Added value: 30
+Is queue full: true
+Cannot add element to full queue
+Removed value: 10
+Removed value: 20
+Removed value: 30
+Cannot remove element from empty queue
+Is queue full: false
+Is queue empty: true
+*/

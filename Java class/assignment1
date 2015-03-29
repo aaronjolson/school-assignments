@@ -1,0 +1,37 @@
+package physics.calculator;
+import java.util.Scanner;
+
+/**
+ * Aaron Olson
+ * Assignment 1
+ * CSCI 2002
+ */
+public class Physics {
+    public static void main(String[] args) {
+// Create a Scanner
+        Scanner input = new Scanner(System.in);
+
+// Enter the variables for the acceleration equation
+        System.out.print("Enter v0, v1, and t: ");
+        double v0 = input.nextDouble();
+        double v1 = input.nextDouble();
+        double t = input.nextDouble();
+
+// Calculate average acceleration
+        double accel =  (v1 - v0) / t;
+// Print output
+        System.out.printf("The average acceleration is %.4f", accel);
+    }
+}
+/*
+Output:
+
+Enter v0, v1, and t: 50 40 45
+The average acceleration is -0.2222
+
+Enter v0, v1, and t: 5.5 50.9 4.5
+The average acceleration is 10.0889
+
+Enter v0, v1, and t: 4.768 234 567785
+The average acceleration is 0.0004
+*/

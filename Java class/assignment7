@@ -1,0 +1,60 @@
+/* 
+*Aaron Olson
+*/
+
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Student student = new Student("Anna", 1920, 3.5);
+        GradStudent gradstudent = new GradStudent("Jimmy", 1919, 4.0, "Computer Science", "The Viability of Computers as Cats");
+
+        System.out.println(student.print());
+        System.out.println(gradstudent.print());
+
+    }
+
+    public static class Student
+    {
+        private String name;
+        private int id;
+        private double gpa;
+
+        public Student(String student_name, int student_id, double student_gpa){
+            name = student_name;
+            id = student_id;
+            gpa = student_gpa;
+
+        }
+
+        public String print()
+        {
+            return "Student: name = " + name + ", ID = " + id + ", GPA = " + gpa;
+        }
+    }
+
+    public static class GradStudent extends Student
+    {
+        private String department;
+        private String thesis_topic;
+
+        public GradStudent(String name, int id, double gpa, String college_department, String college_thesis_topic)
+        {
+            super(name, id, gpa);
+            department = college_department;
+            thesis_topic = college_thesis_topic;
+        }
+
+        public String print()
+        {
+            return super.print() + ", Department = " + department +", Thesis = " + thesis_topic ;
+        }
+    }
+}
+
+/* Output:
+* Student: name = Anna, ID = 1920, GPA = 3.5
+* Student: name = Jimmy, ID = 1919, GPA = 4.0, Department = Computer Science, Thesis = The Viability of Computers as Cats
+*/
+

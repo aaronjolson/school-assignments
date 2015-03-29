@@ -1,0 +1,35 @@
+// Aaron Olson
+// Assignment #2 
+
+import java.util.*;
+
+public class Main {
+     public static void main(String args[]){
+
+         String valid = "n invalid";
+
+         System.out.print("Enter a SSN: ");
+         Scanner scan = new Scanner(System.in);
+         String ssn = scan.next();
+         //System.out.println("Input: "+ssn);
+
+         if(ssn.length()==11) {
+             if( (ssn.charAt(3)=='-') & (ssn.charAt(6)=='-') ) {
+                 String str = ssn.replaceAll("-", "");
+                 if (str.matches("[0-9]+") & str.length()==9) {
+                     valid = " valid";
+                 }
+             }
+         }
+
+         System.out.println( ssn + " is a" + valid + " SSN number");
+     }
+}
+
+/* Output:
+Enter a SSN: 232-23-5435
+232-23-5435 is a valid SSN number
+Enter a SSN: 23-23-5435
+23-23-5435 is an invalid SSN number
+Enter a SSN: 314-ab*1592
+314-ab*1592 is an invalid SSN number */

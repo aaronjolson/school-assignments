@@ -1,0 +1,49 @@
+package com.company;
+
+    /** Main method */
+    public class Main {
+        // method printArray to print Integer array
+        public static void printArray(Integer[] array) {
+            // print each array element
+            for (Integer element : array)
+                System.out.printf("%s ", element);
+            System.out.println();
+        }
+        // method printArray to print Double array
+        public static void printArray(Double[] array) {
+            // print each array element
+            for (Double element : array)
+                System.out.printf("%s ", element);
+            System.out.println();
+        }
+
+        // method printArray to print Character array
+        public static void printArray(Character[] array) {
+            // print each array element
+            for (Character element : array)
+                System.out.printf("%s ", element);
+
+            System.out.println();
+        }
+
+        public static void main(String args[]) {
+            // create arrays of Integer, Double and Character
+            Integer[] intArray = { 1, 2, 3 };
+            Double[] doubleArray = { 9.1346, 5.256, 2.3987 };
+            Character[] charArray = { 'H', 'i' };
+            System.out.println("");
+            printArray(intArray); // pass integer array
+            System.out.println("");
+            printArray(doubleArray); // pass Double array
+            System.out.println("");
+            printArray(charArray); // pass Character array
+        }
+    }
+/*Output:
+1 2 3
+
+9.1346 5.256 2.3987
+
+H i */
+
+
